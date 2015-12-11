@@ -1,0 +1,80 @@
+<head>
+  <title>Leaderboard</title>
+  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="container">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">Leaderboard Demo</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-right">
+		        <li style="padding-top:15px">{{> loginButtons align="right"}}</li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</div>
+	</nav>
+
+
+
+	<div class="container">
+  	
+		{{> leaderboard}}
+	</div>
+  
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+
+<template name="leaderboard">
+	<div class="panel panel-default">
+		{{#each player}}
+			<div class="row player {{selectedClass}}">
+				<div class="col-md-3 col-sm-3 col-xs-3">{{name}}</div>
+		 		<div class="col-md-9 col-sm-9 col-xs-9">{{score}}</div>
+		 	</div>
+		{{/each}}
+	</div>
+	
+	{{#if currentUser}}
+	  <button class="increment btn btn-default">Give 5 Points</button>
+	  <button class="decrement btn btn-default">Take 5 Points</button>
+	  <button class="reset btn btn-default">Reset Score</button>
+	  <button class="remove btn btn-default">Remove Player</button>
+	  {{> addPlayerForm}}
+	{{/if}}
+
+	
+</template>
+
+<template name="addPlayerForm">
+  {{#if currentUser}}
+  	<div class="col-md-5">
+  		<form class="input-group">
+	      <input class="form-control" type="text" name="playerName">
+	      <span class="input-group-btn">
+	      	<button class="btn btn-default" type="submit">Add Player</button>
+	      </span>
+	    </form>
+  	</div>
+    
+  {{/if}}
+</template>

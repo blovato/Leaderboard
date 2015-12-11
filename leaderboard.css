@@ -1,0 +1,12 @@
+/* CSS declarations go here */
+.selected {
+	background-color: #ddd;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+.player {
+	padding:10px;
+}
+form {
+	padding: 10px;
+}
